@@ -1,0 +1,667 @@
+Environment - Beta 2
+
+Release - 7.15.1381/7.14.194
+
+User server - 7.14.194
+
+Compliance-set-1 
+1> Create a bucket and enable bucket-compliance , along with Retetnion time as 1 days*
+2> Upload a single-part object and verify the object should have retention time as 1 days from create-time *
+3> Upload a Multi-part object and verify the object should have retention time as 1 days from create-time *
+4> Create a folder , Upload a single-part object and verify the object should have retention time as 1 days from create-time *
+5> In same folder , Upload a Multi-part object and verify the object should have retention time as 1 days from create-time *
+6> Delete the single-part (retention-active) object via DELETE call , it should throw proper error deletion should fail *
+7> Delete the multi-part (retention-active) object via DELETE call , it should throw proper error deletion should fail *
+8> POST delete the single-part (retention-active) object , it should throw proper error deletion should fail
+9> POST delete the multi-part (retention-active) object , it should throw proper error deletion should fail
+10> POST delete the folder haing (retention-active) object , it should throw proper error deletion should fail
+12> Rename the single-part (retention-active) object via file-details tab , it should throw proper error should not be renamed 
+13> Rename the Multi-part (retention-active) object in folder via More-option -Rename ,it should throw proper error should not be renamed 
+14> Overwrite Existing single-part (retention-active) object , it should throw proper error object should not be overwritten 
+15> Overwrite Existing Multi-part (retention-active) object , it should throw proper error object should not be overwritten 
+16> Increase the Retention period by 1 day for a single-part object, verify the object should have updated retention time
+17> Increase the Retention period by 2 day for a multi-part object, verify the object should have updated retention time
+
+Set-2 Bucket-Compliance 
+18> Reduce the retention period of a  single-part object by 1 day,should throw proper error and make sure the retention time unchanged 
+19> Reduce the retention period of a  multi-part object by 2 day,should throw proper error and make sure the retention time unchanged 
+
+Retention-Expired objects
+
+20> Delete the single-part (retention-expired) object, should be deleted successfully  
+21> Delete the multi-part (retention-expired) object , should be deleted successfully  
+22> POST delete single-part (retention-expired) object, should be deleted successfully  
+23> POST delete multi-part (retention-expired) object, should be deleted successfully  
+24> RENAME single-part (retention-expired) object, should be renamed successfully
+25> RENAME multi-part (retention-expired) object, should be renamed successfully
+26> Overwrite existing single-part (retention-expired) object, should be successfully and retention time will be re-calculated as per bucket settings
+27> Overwrite existing multi-part (retention-expired) object, should be successfully and retention time will be re-calculated as per bucket settings
+
+Legal-Hold ( Retention-Active) - following cases should be done against Retention-Active objects along with legal-hold as True/ON
+
+28> Enable the Legal-Hold as true for a single-part object, verify the object should have updated with legal-hold as true , retention time should not gets affected 
+29> Enable the Legal-Hold as true for a multi-part object (Folder-level), verify the object should have updated with legal-hold as true , retention time should not gets affected 
+30> Delete the single-part (retention-active) Legal-Hold ON object via DELETE call , it should throw proper error deletion should fail
+31> Delete the multi-part (retention-active) Legal-Hold ON  object via DELETE call , it should throw proper error deletion should fail
+32> POST delete the single-part (retention-active) Legal-Hold ON  object , it should throw proper error deletion should fail
+33> POST delete the multi-part (retention-active)  Legal-Hold ON  object , it should throw proper error deletion should fail
+34> Overwrite Existing single-part (retention-active) Legal-Hold ON object , it should throw proper error object should not be overwritten 
+35> Overwrite Existing Multi-part (retention-active) Legal-Hold ON  object , it should throw proper error object should not be overwritten 
+36> Rename the single-part (retention-active) Legal-Hold ON object via file-details tab , it should throw proper error should not be renamed (Console)
+37> Rename the Multi-part (retention-active) Legal-Hold ON object in folder via More-option -Rename ,it should throw proper error should not be renamed  (Console)
+
+Legal-Hold ( Retention-Expired) - following cases should be done against Retention-expired objects along with legal-hold as True/ON
+
+38> Delete the single-part (retention-expired) Legal-Hold ON object via DELETE call , it should throw proper error deletion should fail
+39> Delete the multi-part (retention-expired) Legal-Hold ON  object via DELETE call , it should throw proper error deletion should fail
+40> POST delete the single-part (retention-expired) Legal-Hold ON  object , it should throw proper error deletion should fail
+41> POST delete the multi-part (retention-expired) Legal-Hold ON  object , it should throw proper error deletion should fail
+42> Overwrite Existing single-part (retention-expired) Legal-Hold ON object , it should throw proper error object should not be overwritten 
+43> Overwrite Existing Multi-part (retention-expired) Legal-Hold ON  object , it should throw proper error object should not be overwritten 
+44> Rename the single-part (retention-expired) Legal-Hold ON object via file-details tab , it should throw proper error should not be renamed (Console)
+45> Rename the Multi-part (retention-expired) Legal-Hold ON object in folder via More-option -Rename ,it should throw proper error should not be renamed  (Console)
+
+Legal-Hold ( Retention-Expired) - following cases should be done against Retention-expired objects along with legal-hold as false/OFF 
+
+46> Delete the single-part (retention-expired) Legal-Hold OFF object, should be deleted successfully  
+47> Delete the multi-part (retention-expired) Legal-Hold OFF object , should be deleted successfully  
+48> POST delete single-part (retention-expired) Legal-Hold OFF object, should be deleted successfully  
+49> POST delete multi-part (retention-expired) Legal-Hold OFF object, should be deleted successfully  
+50> RENAME single-part (retention-expired) Legal-Hold OFF object, should be renamed successfully
+51> RENAME multi-part (retention-expired) Legal-Hold OFF object, should be renamed successfully
+52> Overwrite existing single-part (retention-expired) Legal-Hold OFF object, should be successfully and retention time will be re-calculated as per bucket settings
+53> Overwrite existing multi-part (retention-expired) Legal-Hold OFF object, should be successfully and retention time will be re-calculated as per bucket settings
+
+Set-3
+
+Conditional-Hold ( Retention-Active) - following cases should be done against Retention-Active objects along with Conditional-hold as True/ON
+
+54> Enable the Conditional-Hold as true for a single-part object, verify the object should have updated with Conditional-hold as true , retention time should not gets affected 
+55> Enable the Conditional-Hold as true for a multi-part object (Folder-level), verify the object should have updated with Conditional-hold as true , retention time should not gets affected 
+56> Delete the single-part (retention-active) Conditional-Hold ON object via DELETE call , it should throw proper error deletion should fail
+57> Delete the multi-part (retention-active) Conditional-Hold ON  object via DELETE call , it should throw proper error deletion should fail
+58> POST delete the single-part (retention-active) Conditional-Hold ON  object , it should throw proper error deletion should fail
+59> POST delete the multi-part (retention-active)  Conditional-Hold ON  object , it should throw proper error deletion should fail
+60> Overwrite Existing single-part (retention-active) Conditional-Hold ON object , it should throw proper error object should not be overwritten 
+61> Overwrite Existing Multi-part (retention-active) Conditional-Hold ON  object , it should throw proper error object should not be overwritten 
+62> Rename the single-part (retention-active) Conditional-Hold ON object via file-details tab , it should throw proper error should not be renamed (Console)
+63> Rename the Multi-part (retention-active) Conditional-Hold ON object in folder via More-option -Rename ,it should throw proper error should not be renamed  (Console)
+
+Conditional-Hold ( Retention-Expired) - following cases should be done against Retention-expired objects along with Conditional-Hold as True/ON
+
+64> Delete the single-part (retention-expired) Conditional-Hold ON object via DELETE call , it should throw proper error deletion should fail
+65> Delete the multi-part (retention-expired) Conditional-Hold ON  object via DELETE call , it should throw proper error deletion should fail
+66> POST delete the single-part (retention-expired) Conditional-Hold ON  object , it should throw proper error deletion should fail
+67> POST delete the multi-part (retention-expired) Conditional-Hold ON  object , it should throw proper error deletion should fail
+68> Overwrite Existing single-part (retention-expired) Conditional-Hold ON object , it should throw proper error object should not be overwritten 
+69> Overwrite Existing Multi-part (retention-expired) Conditional-Hold ON  object , it should throw proper error object should not be overwritten 
+70> Rename the single-part (retention-expired) Conditional-Hold ON object via file-details tab , it should throw proper error should not be renamed (Console)
+71> Rename the Multi-part (retention-expired) Conditional-Hold ON object in folder via More-option -Rename ,it should throw proper error should not be renamed  (Console)
+
+Conditional-Hold ( Retention-Expired) - following cases should be done against Retention-expired objects along with Conditional-hold as false/OFF 
+
+72> Disable the Conditional-Hold as false for a single-part object, verify the object should have updated with Conditional-hold as false , retention time should be updated as per bucket settings 
+73> Disable the Conditional-Hold as false for a multi-part object (Folder-level), verify the object should have updated with Conditional-hold as false , retention time should be updated as per bucket settings
+
+74> Delete the single-part (retention-expired) Conditional-Hold OFF object, should be deleted successfully  
+75> Delete the multi-part (retention-expired) Conditional-Hold OFF object , should be deleted successfully  
+76> POST delete single-part (retention-expired) Conditional-Hold OFF object, should be deleted successfully  
+77> POST delete multi-part (retention-expired) Conditional-Hold OFF object, should be deleted successfully  
+78> RENAME single-part (retention-expired) Conditional-Hold OFF object, should be renamed successfully
+79> RENAME multi-part (retention-expired) Conditional-Hold OFF object, should be renamed successfully
+80> Overwrite existing single-part (retention-expired) Conditional-Hold OFF object, should be successfully and retention time will be re-calculated as per bucket settings
+81> Overwrite existing multi-part (retention-expired) Conditional-Hold OFF object, should be successfully and retention time will be re-calculated as per bucket settings
+
+Legal-Hold-case 
+82> Disable the Legal-Hold as false for a single-part object, verify the object should have updated with Legal-hold as false , make sure the retention time unchanged 
+83> Disable the Legal-Hold as false for a multi-part object (Folder-level), verify the object should have updated with Legal-hold as false , make sure the retention time unchanged 
+
+
+
+Task For-25/05/23
+Ok, I have cases Normal bucket Vs S3-APP start working on these 
+Let me know once you have completed that 
+S3-APPS 
+
+1> Create a Normal bucket via S3-App, make sure it doesn't have any feature enabled from settings tab [Console]
+2> Upload a single-part object to the bucket , make sure the size is properly showing along with uploaded time 
+3> Upload a multi-part object to the bucket , make sure the size is properly showing along with uploaded time
+4> Rename the existing single-part object in the bucket , download it to make sure its not corrupted 
+5> Rename the existing multi-part object in the bucket , download it to make sure its not corrupted 
+6> Upload a single-part object to the FOLDER of bucket , make sure the size is properly showing along with uploaded time
+7> Upload a multi-part object to the FOLDER of bucket , make sure the size is properly showing along with uploaded time 
+8> Overwrite the existing  single-part object in the folder , download the object make sure its overwritten properly 
+9> Overwrite the existing  multi-part object in the folder , download the object make sure its overwritten properly 
+10> Rename the folder having objects , make sure all the objects inside the folder gets renamed properly 
+11> DELETE the single-part object , make sure its getting deleted permanently (check in console)
+12> DELETE the multi-part object , make sure its getting deleted permanently (check in console)
+13> Select multiple objects and delete , make sure its getting deleted permanently (check in console)
+14> DELETE the folder having objects , make sure its getting deleted permanently (check in console)
+
+S3 APP Vs Version bucket 
+
+1> Create a Normal bucket, enable the versioning option from S3 APP , Make sure the bucket properly enabled with version option (check in console)
+2> Upload a single-part object to the bucket , make sure the size is properly showing along with uploaded time and VersionID
+3> Upload a multi-part object to the bucket , make sure the size is properly showing along with uploaded time and VersionID
+4> Rename the existing single-part object in the bucket ,existing objects becomes previous version and Renamed object will be current version
+5> Rename the existing multi-part object in the bucket , existing objects becomes previous version and Renamed object will be current version
+6> Overwrite the existing single-part object ,make sure overwritten objects will becomes latest version existing will becomes previous-version
+7> Overwrite the existing multi-part object , make sure overwritten objects will becomes latest version existing will becomes previous-version
+8> Download the current and previous-version of single-part objects , to make sure its properly overwritten 
+9> Download the current and previous-version of multi-part objects , to make sure its properly overwritten 
+10> DELETE the single-part object temporarly , make sure its getting to previous version (check in versions/ console) 
+11> DELETE the multi-part object temporarly , make sure its getting to previous version (check in versions/ console) 
+12> DELETE the single-part object permanently , make sure its getting to permanently delete (check in versions/ console) 
+13> DELETE the multi-part object permanently , make sure its getting to permanently delete (check in versions/ console) 
+
+
+Folder-Level 
+
+14> Upload a single-part object to the folder , make sure the size is properly showing along with uploaded time and VersionID
+15> Upload a multi-part object to the folder , make sure the size is properly showing along with uploaded time and VersionID
+16> Rename the existing single-part object in the folder ,existing objects becomes previous version and Renamed object will be current version
+17> Rename the existing multi-part object in the folder , existing objects becomes previous version and Renamed object will be current version
+18> Rename the folder with objects ,existing folder with objects becomes previous version and Renamed folder with object will be current version 
+19> Overwrite the existing single-part object in the folder ,make sure overwritten objects will becomes latest version existing will becomes previous-version
+20> Overwrite the existing multi-part object in the folder , make sure overwritten objects will becomes latest version existing will becomes previous-version
+21> Download the current and previous-version of single-part objects in the folder , to make sure its properly overwritten 
+22> Download the current and previous-version of multi-part objects in the folder , to make sure its properly overwritten 
+23> DELETE the single-part object temporarly from the folder , make sure its getting to previous version (check in versions/ console) 
+24> DELETE the multi-part object temporarly from the folder, make sure its getting to previous version (check in versions/ console) 
+25> DELETE the single-part object permanently from the folder, make sure its getting to permanently delete (check in versions/ console) 
+26> DELETE the multi-part object permanently from the folder, make sure its getting to permanently delete (check in versions/ console) 
+27> DELETE the folder having objects  make sure its getting to previous version (check in versions/ console) 
+
+
+Good Morning 
+S3 APP Vs Legacy-Compliance (Bucket-Compliance) 
+
+1> Create a bucket and enable bucket-compliance , along with Retetnion time as 2 days (via console)
+2> Upload a single-part object and verify the object should have retention time as 2 days from create-time 
+3> Upload a Multi-part object and verify the object should have retention time as 2 days from create-time 
+4> Create a folder , Upload a single-part object and verify the object should have retention time as 2 days from create-time 
+5> In same folder , Upload a Multi-part object and verify the object should have retention time as 2 days from create-time 
+6> Delete the single-part (retention-active) object via S3 APP, it should throw proper error as 403 (Access Denied) deletion should fail
+7> Delete the multi-part (retention-active) object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+8> Delete the folder having (retention-active) object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+9> Rename the single-part (retention-active) object via S3 App, we should have Renamed object as well as Existing object 
+10> Check the Retention time of renamed single-part objects and make sure its having retention time as 2 days from create-time 
+11> Rename the multi-part (retention-active) object via S3 App, we should have Renamed objects as well as Existing object 
+12> Check the Retention time of renamed multi-part objects and make sure its having retention time as 2 days from create-time 
+13> Overwrite Existing single-part (retention-active) object , it should throw proper error object should not be overwritten 
+14> Overwrite Existing Multi-part (retention-active) object , it should throw proper error object should not be overwritten 
+15> Reduce the retention period of a RENAMED single-part object by 1 day, should throw proper error and make sure the retention time unchanged (API)
+16> Reduce the retention period of a RENAMED multi-part object by 1 day, should throw proper error and make sure the retention time unchanged (API)
+17> Increase the Retention period by 1 day for a RENAMED single-part object, verify the object should have updated retention time (API)
+18> Increase the Retention period by 2 day for a RENAMED multi-part object, verify the object should have updated retention time (API)
+
+Note : 
+a> Renaming an objects via S3 app make a copy of the object with New_name then tries to Delete the existing objects 
+Renaming A.txt -> B.txt , 1st a copy of A will be created as B.txt , then it tries to Delete A.txt 
+b> Renamed object will be applied with retention time based upon the bucket preset compliance value 
+c> Some of the Cases mentioned above will be done in Console and API (POST-MAN) it will be specified at the end of each cases , If any cases doesn't specify then it has to be executed via S3 APP 
+
+
+S3 APP Vs Legacy-Compliance (Bucket-Compliance) Set-2 
+
+Legal-Hold ( Retention-Active) - following cases should be done against Retention-Active objects along with legal-hold as True/ON
+
+19> Upload a single-part object and enable Legal-Hold as ON (Folder-level) , Make sure its properly applied  (API)
+20> Upload a Multi-part object and enable Legal-Hold as ON , Make sure its properly applied (API)
+21> Delete the single-part (retention-active) Legal-Hold ON object via S3 APP, it should throw proper error as 403 (Access Denied) deletion should fail
+22> Delete the multi-part (retention-active) Legal-Hold ON object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+23> Rename the single-part (retention-active) Legal-Hold ON object via S3 App, we should have Renamed object as well as Existing object 
+24> Check the Retention time of renamed single-part objects and make sure its having retention time as 2 days from create-time,Legal-Hold as OFF
+25> Rename the multi-part (retention-active) Legal-Hold ON object via S3 App, we should have Renamed objects as well as Existing object 
+26> Check the Retention time of renamed multi-part objects and make sure its having retention time as 2 days from create-time,Legal-Hold as OFF
+27> Overwrite Existing single-part (retention-active) Legal-Hold ON object , it should throw proper error object should not be overwritten 
+28> Overwrite Existing Multi-part (retention-active) Legal-Hold ON object , it should throw proper error object should not be overwritten 
+
+Legal-Hold ( Retention-Expired) - following cases should be done against Retention-Expire objects along with legal-hold as True/ON
+
+29> Delete the single-part (retention-expire) Legal-Hold ON object via S3 APP, it should throw proper error as 403 (Access Denied) deletion should fail
+30> Delete the multi-part (retention-expire) Legal-Hold ON object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+31> Overwrite Existing single-part (retention-expire) Legal-Hold ON object , it should throw proper error object should not be overwritten 
+32> Overwrite Existing Multi-part (retention-expire) Legal-Hold ON object , it should throw proper error object should not be overwritten 
+
+Legal-Hold ( Retention-Expired) - following cases should be done against Retention-Expire objects along with legal-hold as False/OFF
+33> Disable the Legal-Hold as false for a single-part object, verify the object should have updated with Legal-hold as false , make sure the retention time unchanged (API)
+34> Disable the Legal-Hold as false for a multi-part object (Folder-level), verify the object should have updated with Legal-hold as false , make sure the retention time unchanged (API)
+35> Delete the single-part (retention-expired) Legal-Hold OFF object, should be deleted successfully  
+36> Delete the multi-part (retention-expired) Legal-Hold OFF object , should be deleted successfully 
+37> Overwrite existing single-part (retention-expired) Legal-Hold OFF object, should be successfully and retention time will be re-calculated as per bucket settings
+38> Overwrite existing multi-part (retention-expired) Legal-Hold OFF object, should be successfully and retention time will be re-calculated as per bucket settings
+
+
+Good Morning 
+RAJESH 
+After completing the above case , Pls focus on the following cases 
+S3 APP Vs Legacy-Compliance (Bucket-Compliance) Set-3 
+
+Conditional-Hold ( Retention-Active) - following cases should be done against Retention-Active objects along with Conditional-hold as True/ON
+
+39> Enable the Conditional-Hold as true for a single-part object, verify the object should have updated with Conditional-hold as true , retention time should not gets affected (API)
+40> Enable the Conditional-Hold as true for a multi-part object (Folder-level), verify the object should have updated with Conditional-hold as true , retention time should not gets affected (API)
+41> Delete the single-part (retention-active) Conditional-Hold ON object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+42> Delete the multi-part (retention-active) Conditional-Hold ON object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+43> Rename the single-part (retention-active) Conditional-Hold ON object via S3 App, should have Renamed object as well as Existing object 
+44> Check the Retention time of renamed single-part objects and make sure its having retention time as 2 days from create-time,Conditional-Hold as OFF
+45> Rename the multi-part (retention-active) Conditional-Hold ON object via S3 App, should have Renamed objects as well as Existing object 
+46> Check the Retention time of renamed multi-part objects and make sure its having retention time as 2 days from create-time,Conditional-Hold as OFF
+47> Overwrite Existing single-part (retention-active) Conditional-Hold ON object ,should throw proper error as 403 (Access Denied) failed to overwrite
+48> Overwrite Existing Multi-part (retention-active) Conditional-Hold ON  object ,should throw proper error as 403 (Access Denied) failed to overwrite
+
+Conditional-Hold ( Retention-Expired) - following cases should be done against Retention-expired objects along with Conditional-Hold as True/ON
+
+49> Delete the single-part (retention-expired) Conditional-Hold ON object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+50> Delete the multi-part (retention-expired) Conditional-Hold ON object via S3 APP , it should throw proper error as 403 (Access Denied) deletion should fail
+51> Overwrite Existing single-part (retention-expired) Conditional-Hold ON object ,should throw proper error as 403 (Access Denied) failed to overwrite
+52> Overwrite Existing Multi-part (retention-expired) Conditional-Hold ON  object ,should throw proper error as 403 (Access Denied) failed to overwrite
+
+Conditional-Hold ( Retention-Expired) - following cases should be done against Retention-expired objects along with legal-hold as false/OFF 
+
+53> Disable the Conditional-Hold as false for a single-part object, verify the object should have updated with Conditional-hold as false , retention time should be updated as per bucket settings 
+54> Disable the Conditional-Hold as false for a multi-part object (Folder-level), verify the object should have updated with Conditional-hold as false , retention time should be updated as per bucket settings
+55> Delete the single-part (retention-expired) Conditional-Hold OFF object via S3 APP, should be deleted successfully  
+56> Delete the multi-part (retention-expired) Conditional-Hold OFF object via S3 APP, should be deleted successfully  
+57> Overwrite existing single-part (retention-expired) Conditional-Hold OFF object via S3 APP, should be successfully and retention time will be re-calculated as per bucket settings
+58> Overwrite existing multi-part (retention-expired) Conditional-Hold OFF object via S3 APP, should be successfully and retention time will be re-calculated as per bucket settings
+
+Note : You have reported an issue with case 23 , i will diagnose that on Monday (skip this case) 
+
+
+
+Good morning 
+RAJESH  
+Create a VERSION bucket and execute the following s3 command set cases 
+
+1> Upload a single-part object using s3 command to bucket 
+2> Upload a multi-part object using s3 command to bucket (objects size 20M , per part size 15M)
+3> Use Head call to verify the uploaded object size , timestamp and multiparted / single part 
+4> Upload a single-part object using s3 command to folder 
+5> Upload a multi-part object using s3 command to folder (objects size 150M , per part size 72M)
+6> Use Head call to verify the uploaded object size , timestamp and multiparted / single part 
+7> Rename the single-part object in bucket using s3 command set 
+8> Rename the multi-part object in bucket using s3 command set 
+9> Rename the single-part object in folder using s3 command set 
+10> Rename the multi-part object in folder using s3 command set 
+11> List the objects under the bucket level using s3 command set 
+12> List the objects under the folder level using s3 command set 
+13> Download the renamed single-part object from bucket using s3 command set , make sure its not corrupted 
+14> Download the renamed multi-part object from bucket using s3 command set  , make sure its not corrupted 
+15> Download the renamed single-part object from folder using s3 command set , make sure its not corrupted 
+16> Download the renamed multi-part object from folder using s3 command set  , make sure its not corrupted 
+17> Delete the single-part object from bucket using s3 command set 
+18> Delete the multi-part object from bucket using s3 command set 
+19> List the objects in bucket level shouldn't shows the deleted objects 
+20> Delete the single-part object from folder using s3 command set 
+21> Delete the multi-part object from folder using s3 command set 
+22> List the objects in folder level shouldn't shows the deleted objects 
+
+* Delete call initiated without version-id i.e temporary delete
+
+RAJESH 
+start executing  the following cases 
+Compliance - create a bucket and enabled Legacy-compliance with retention days as 1 
+
+23> Upload a single-part object using s3 command to bucket 
+24> Upload a multi-part object using s3 command to bucket (objects size 50M , per part size 21M)
+25> Use Head call to verify the uploaded object size , timestamp and multi-parted / single part 
+26> Get the Retention-time of single/ multipart objects is showing properly [API]
+27> Upload a single-part object using s3 command to folder 
+28> Upload a multi-part object using s3 command to folder (objects size 110M , per part size 84M)
+29> Use Head call to verify the uploaded object size , timestamp and multi-parted / single part 
+30> Get the Retention-time of single/ multipart objects in folder-level is showing properly [API]
+31> Rename the single-part [Retention-Active] object in bucket using s3 command set ,should have Renamed object as well as Existing object 
+32> Rename the multi-part [Retention-Active] object in bucket using s3 command set, should have Renamed object as well as Existing object  
+33> Get the Retention-time of renamed single/ multipart objects is showing properly [API]
+34> Rename the single-part [Retention-Active] object in folder using s3 command set, should have Renamed object as well as Existing object  
+35> Rename the multi-part [Retention-Active] object in folder using s3 command set, should have Renamed object as well as Existing object  
+36> Get the Retention-time of renamed single/ multipart objects in folder-level is showing properly [API]
+37> List the objects under the bucket level using s3 command set 
+38> List the objects under the folder level using s3 command set 
+39> Download the renamed single-part object from bucket using s3 command set , make sure its not corrupted 
+40> Download the renamed multi-part object from bucket using s3 command set  , make sure its not corrupted 
+41> Download the renamed single-part object from folder using s3 command set , make sure its not corrupted 
+42> Download the renamed multi-part object from folder using s3 command set  , make sure its not corrupted 
+43> Delete the single-part [Retention-Active] object from bucket using s3 command set , must be failed to delete with error as Access-denied 
+44> Delete the multi-part [Retention-Active] object from bucket using s3 command set ,must be failed to delete with error as Access-denied 
+45> Delete the single-part/multipart [Retention-Active] object from folder using s3 commands set , must be failed to delete with error as Access-denied 
+
+Retention-Expired 
+46> Rename the single-part [Retention-expired] object in bucket using s3 command set ,should have Renamed object and existing object gets deleted 
+47> Rename the multi-part [Retention-expired] object in bucket using s3 command set ,should have Renamed object and existing object gets deleted 
+48> Get the Retention-time of renamed single/ multipart objects is showing properly [API]
+49> Rename the single-part [Retention-expired] object in folder using s3 command set, should have Renamed object and existing object gets deleted 
+50> Rename the multi-part [Retention-expired] object in folder using s3 command set, should have Renamed object and existing object gets deleted 
+51> Get the Retention-time of renamed single/ multipart objects in folder-level is showing properly [API]
+52> Delete the single-part [Retention-expired] object from bucket using s3 command set , must be deleted properly 
+53> Delete the multi-part [Retention-expired] object from bucket using s3 command set ,must be deleted properly 
+54> Delete the single-part/multipart [Retention-expired] object from folder using s3 commands set , must be deleted properly 
+
+AWSCLI- Vs Object-Lock Gov-Mode 
+1> Create a Object-lock bucket, Enable the Bucket  bucket-level object retention as Governance Mode with retention day as 1
+2> Upload a single-part object to the bucket , make sure the size is properly showing along with uploaded time and VersionID and Governance  Mode 
+3> Upload a multi-part object to the bucket , make sure the size is properly showing along with uploaded time and VersionID and Governance  Mode 
+Update the retention time of the Governace Mode as 2 the execute the following cases 
+4> Rename the existing single-part object in the bucket ,existing objects becomes previous version and Renamed object will be current version
+5> Rename the existing multi-part object in the bucket , existing objects becomes previous version and Renamed object will be current version
+6> Renamed object should have mode as Governance  Mode (retention time 2 days) and existing objects should retain Mode and time as 1 day 
+7> Overwrite the existing single-part object ,make sure overwritten objects will becomes latest version existing will becomes previous-version
+8> Overwrite the existing multi-part object , make sure overwritten objects will becomes latest version existing will becomes previous-version
+Overwritten current-version object should have mode as Governance  Mode (retention time 2 days) and previous-version objects should retain Mode and time as 1 day 
+9> Download the current and previous-version of single-part objects , to make sure its properly overwritten 
+10> Download the current and previous-version of multi-part objects , to make sure its properly overwritten 
+11> DELETE the single-part object temporarly , make sure its getting to previous version (check in versions/ console) 
+12> DELETE the multi-part object temporarly , make sure its getting to previous version (check in versions/ console) 
+
+AWSCLI- Vs Object-Lock Com-Mode 
+1> Create a Object-lock bucket, Enable the Bucket  bucket-level object retention as Compliance Mode with retention day as 1
+2> Upload a single-part object to the bucket , make sure the size is properly showing along with uploaded time and VersionID and  Compliance  Mode 
+3> Upload a multi-part object to the bucket , make sure the size is properly showing along with uploaded time and VersionID and  Compliance  Mode 
+Update the retention time of the Compliance Mode as 2 the execute the following cases 
+4> Rename the existing single-part object in the bucket ,existing objects becomes previous version and Renamed object will be current version
+5> Rename the existing multi-part object in the bucket , existing objects becomes previous version and Renamed object will be current version
+6> Renamed object should have mode as Compliance  Mode (retention time 2 days) and existing objects should retain Mode and time as 1 day 
+7> Overwrite the existing single-part object ,make sure overwritten objects will becomes latest version existing will becomes previous-version
+8> Overwrite the existing multi-part object , make sure overwritten objects will becomes latest version existing will becomes previous-version
+Overwritten current-version object should have mode as  Compliance  Mode (retention time 2 days) and previous-version objects should retain Mode and time as 1 day 
+9> Download the current and previous-version of single-part objects , to make sure its properly overwritten 
+10> Download the current and previous-version of multi-part objects , to make sure its properly overwritten 
+11> DELETE the single-part object temporarly , make sure its getting to previous version (check in versions/ console) 
+12> DELETE the multi-part object temporarly , make sure its getting to previous version (check in versions/ console) 
+
+
+Normal Vs S3API - multipart-upload 
+
+1> Initiate multipart upload and COMPLETE it by uploading all the parts , verify that its not corrupted 
+2> Initiate multipart upload and ABORT it after uploading all the parts ,  make sure its cleared properly from bucket 
+3> Initiate multipart upload folder-level and COMPLETE it by uploading all the parts , verify that its not corrupted 
+4> Initiate multipart upload folder-level and ABORT it after uploading all the parts ,  make sure its cleared properly from bucket \
+5> Initiate multipart upload, upload the Part-1  today use list call to check and COMPLETE it by next-day 
+6> Completed multipart-upload on NEXT day and use HEAD-call , downloading it should not be corrupted 
+7> Initiate multipart upload, upload the Part-1  today and ABORT by next-day , make sure its cleared properly from bucket 
+8> Initiate multipart upload folder-level, upload the Part-1  today use list call to check and COMPLETE it by next-day 
+9> Completed multipart-upload folder-level on NEXT day and use HEAD-call , downloading it should not be corrupted 
+10> Initiate multipart upload folder-level, upload the Part-1  today and ABORT by next-day , make sure its cleared properly from bucket 
+11> Abort the committed multipart upload should throw proper error (bucket/folder-level) 
+
+Versioning Vs S3API - multipart-upload 
+
+12> Initiate multipart upload and COMPLETE it by uploading all the parts , use HEAD-call should have version-id 
+13> Verify the object doesn't gets corrupted by downloading it 
+14> Initiate multipart upload and ABORT it after uploading all the parts ,  make sure its cleared properly from bucket 
+15> Initiate multipart upload folder-level and COMPLETE it by uploading all the parts , use HEAD-call should have version-id 
+16> Verify the object folder-level doesn't gets corrupted by downloading it 
+17> Initiate multipart upload folder-level and ABORT it after uploading all the parts ,  make sure its cleared properly from bucket 
+18> Initiate multipart upload, upload the Part-1 today use list call to check and COMPLETE it by next-day 
+19> Completed multipart-upload on NEXT day and use HEAD-call having version-id , downloading it should not be corrupted 
+20> Initiate multipart upload, upload the Part-1 today and ABORT by next-day , make sure its cleared properly from bucket 
+21> Initiate multipart upload folder-level, upload the Part-1 today use list call to check and COMPLETE it by next-day 
+22> Completed multipart-upload folder-level on NEXT day and use HEAD-call having version-id , downloading it should not be corrupted 
+23> Initiate multipart upload folder-level , upload the Part-1 today and ABORT by next-day , make sure its cleared properly from bucket 
+24> Abort the committed multipart upload should throw proper error (bucket/folder-level) 
+
+
+25> Initiate multipart upload and COMPLETE it by uploading all the parts , verify that its not corrupted 
+26> Verify the multiparted object has Compliance Retention time applied as per the bucket settings (API)
+27> Initiate multipart upload and ABORT it after uploading all the parts ,  make sure its cleared properly from bucket 
+28> Initiate multipart upload folder-level and COMPLETE it by uploading all the parts , verify that its not corrupted 
+29> Verify the multiparted object folder-level has Compliance Retention time applied as per the bucket settings (API)
+30> Initiate multipart upload folder-level and ABORT it after uploading all the parts ,  make sure its cleared properly from bucket 
+31> Initiate multipart upload, upload the Part-1  today use list call to check and COMPLETE it by next-day 
+32> Completed multipart-upload on NEXT day and use HEAD-call , downloading it should not be corrupted 
+33> Verify the multiparted object has Compliance Retention time applied as per the bucket settings (API)
+34> Initiate multipart upload, upload the Part-1  today and ABORT by next-day , make sure its cleared properly from bucket 
+35> Initiate multipart upload folder-level, upload the Part-1  today use list call to check and COMPLETE it by next-day 
+36> Completed multipart-upload folder-level on NEXT day and use HEAD-call , downloading it should not be corrupted 
+37> Verify the multiparted object folder-level has Compliance Retention time applied as per the bucket settings (API)
+38> Initiate multipart upload folder-level, upload the Part-1  today and ABORT by next-day , make sure its cleared properly from bucket 
+39> Abort the committed multipart upload should throw proper error (bucket/folder-level) 
+
+Normal level and folder level
+
+hi , RAJESH 
+You can start working on following cases 
+object-Lock (Governance) Vs S3API [Retention-Active] 
+1> Create bucket enabled with Object-lock , mode should be Governance and Retention period as 2 days 
+2> Upload single-part objects via aws-cli, Governance mode and retention time should be applied (as per bucket) use HEAD object call 
+3> Upload multi-part objects via aws-cli, Governance mode and retention time should be applied (as per bucket) use HEAD object call 
+4> Reduce the retention period of the single-part Governance object to few minutes without bypass , should be failed 
+5> Reduce the retention period of the single-part Governance object to few minutes with no-bypass , should be failed 
+6> Reduce the retention period of the single-part Governance object to few minutes with bypass , should be successful  
+7> Reduce the retention period of the multi-part Governance object by 1day without bypass , should be failed 
+8> Reduce the retention period of the multi-part Governance object by 1day with no-bypass , should be failed 
+9> Reduce the retention period of the multi-part Governance object by 1day with bypass , should be successful  
+10> Temporary Delete the single-part Governance [retention-active] object should be successful  , becomes previous version 
+11> Use list call to make sure Delete-marker gets created , previous version should be listed properly , No change in mode and retention time 
+12> Temporary Delete the multi-part Governance [retention-active] object should be successful  , becomes previous version 
+13> Use list call to make sure Delete-marker gets created , previous version should be listed properly , No change in mode and retention time 
+14> Permanently Delete the single-part Governance [retention-active] object via aws-cli , should be failed 
+15> Permanently Delete the single-part Governance [retention-active] via aws-cli with no-by-pass governance , should be failed   
+16> Permanently Delete the single-part Governance [retention-active] via aws-cli with by-pass governance , should be successful  
+17> Increase the retention period of the single-part Governance object to few hours without bypass , should be successful 
+18> Increase the retention period of the multi-part Governance object to few hours without bypass , should be successful 
+19> Change the single-part Governance [retention-active] object to Compliance mode without bypass , should be failed 
+20> Change the single-part Governance [retention-active] object to Compliance mode with no-bypass , should be failed 
+21> Change the single-part Governance [retention-active] object to Compliance mode with bypass , should be successful  
+22> Change the multi-part Governance [retention-active] object to Compliance mode without bypass , should be failed 
+23> Change the multi-part Governance [retention-active] object to Compliance mode with no-bypass , should be failed 
+24> Change the multi-part Governance [retention-active] object to Compliance mode with bypass , should be successful  
+ * Note after completing the bucket level , Execute the above cases with object under Folder level 
+
+
+26> Overwrite the existing single-part Governance object without any mode 
+27> Overwrite the existing multi-part Governance object without any mode 
+28> Use list call to make sure Current and previous version should be listed properly ,verify mode and retention time only applies for previous version alone
+29> Overwrite the existing single-part Governance object with Governance mode , should have 5 days retention from now 
+30> Overwrite the existing Multi-part Governance object with Governance mode , should have 5 days retention from now 
+31> Use list call to make sure Current and previous version should be listed properly ,verify mode and retention time properly applied 
+32> Overwrite the existing single-part Governance object with Compliance mode , should have 3 days retention from now 
+33> Overwrite the existing Multi-part Governance object with Compliance mode , should have 5 days retention from now 
+34> Use list call to make sure Current and previous version should be listed properly ,verify mode and retention time properly applied 
+35> Permanently Delete the Governance retention active object [previous-version] via aws-cli without by-pass , should be failed 
+36> Permanently Delete the Governance retention active object [previous-version] via aws-cli with no-by-pass governance , should be failed 
+37> Permanently Delete the Governance retention active object [previous-version] via aws-cli with by-pass governance , should be successful 
+
+
+Governance [Retention-Active] Vs Legal-Hold 
+
+38> Enable the Legal-hold for an existing single-part Governance object [Current-version], should be successful [put-object-legal-hold  cmd] 
+39> Enable the Legal-hold for an existing multi-part Governance object [Current-version], should be successful 
+40> Verify the objects [Current-version] having Mode, retention time along with legal-hold status as ON 
+41> Temporary Delete the single-part Governance [retention-active] object (Legal-hold-ON) should be successful  , becomes previous version 
+42> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+43> Temporary Delete the multi-part Governance [retention-active] object (Legal-hold-ON) should be successful  , becomes previous version 
+44> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+45> Verify the objects [previous-version] retaining Mode, retention time along with legal-hold status as ON (No changes) 
+46> Permanently Delete the single-part Governance [retention-active] object (Legal-hold-ON) should be failed with proper error , without bypass 
+47> Permanently Delete the single-part Governance [retention-active] object (Legal-hold-ON) should be failed with proper error , with no-bypass 
+48> Permanently Delete the single-part Governance [retention-active] object (Legal-hold-ON) should be failed with proper error , with bypass 
+49> Permanently Delete the multi-part Governance [retention-active] object (Legal-hold-ON) should be failed with proper error , without bypass 
+50> Permanently Delete the multi-part Governance [retention-active] object (Legal-hold-ON) should be failed with proper error , with no-bypass 
+51> Permanently Delete the multi-part Governance [retention-active] object (Legal-hold-ON) should be failed with proper error , with bypass 
+52> Disable the Legal-hold for an existing single-part Governance object [previous-version], should be successful
+53> Disable the Legal-hold for an existing multi-part Governance object [previous-version], should be successful
+54> Verify the objects [Current-version] having Mode, retention time along with legal-hold status as OFF 
+55> Permanently Delete the single-part Governance [retention-active] object (Legal-hold-OFF) via aws-cli without by-pass , should be failed 
+56> Permanently Delete the single-part Governance [retention-active] object (Legal-hold-OFF) via aws-cli with no-by-pass , should be failed 
+57> Permanently Delete the single-part Governance [retention-active] object (Legal-hold-OFF) via aws-cli with by-pass , should be successful
+58> Permanently Delete the multi-part Governance [retention-active] object (Legal-hold-OFF) via aws-cli without by-pass , should be failed 
+59> Permanently Delete the multi-part Governance [retention-active] object (Legal-hold-OFF) via aws-cli with no-by-pass , should be failed 
+60> Permanently Delete the multi-part Governance [retention-active] object (Legal-hold-OFF) via aws-cli with by-pass , should be successful
+62> Upload single-part objects via aws-cli with Mode Governance mode and retention time along with Legal-hold as ON should be applied via put-object (over-ride bucket mode) 
+63> Upload multi-part objects via aws-cli with Mode Governance mode and retention time along with Legal-hold as ON should be applied via put-object (over-ride bucket mode)
+64> Verify the uploaded objects [Current-version] having Mode, retention time along with legal-hold status as ON 
+
+
+ok.. 
+You can start these following set of cases RAJESH 
+
+Governance [Retention-Expired ]
+
+65> Temporary Delete the single-part Governance [retention-expired] object should be successful, becomes previous version 
+66> Use list call to make sure Delete-marker gets created , previous version should be listed properly, No change in mode and retention time 
+67> Temporary Delete the multi-part Governance [retention-expired] object should be successful, becomes previous version 
+68> Use list call to make sure Delete-marker gets created , previous version should be listed properly, No change in mode and retention time 
+69> Permanently Delete the single-part Governance [retention-expired] via aws-cli without by-pass governance, should be successful  
+70> Permanently Delete the multi-part Governance [retention-expired] via aws-cli without by-pass governance, should be successful  
+
+Governance [Retention-Expired] Vs Legal-Hold 
+
+71> Temporary Delete the single-part Governance [retention-expired] object (Legal-hold-ON) should be successful, becomes previous version 
+72> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+73> Temporary Delete the multi-part Governance [retention-expired] object (Legal-hold-ON) should be successful, becomes previous version 
+74> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+75> Verify the objects [previous-version] retaining Mode, retention time along with legal-hold status as ON (No changes)
+76> Permanently Delete the single-part Governance [retention-expired] object (Legal-hold-ON) should be failed with proper error, without bypass 
+77> Permanently Delete the single-part Governance [retention-expired] object (Legal-hold-ON) should be failed with proper error, with no-bypass 
+78> Permanently Delete the single-part Governance [retention-expired] object (Legal-hold-ON) should be failed with proper error, with bypass 
+79> Permanently Delete the multi-part Governance [retention-expired] object (Legal-hold-ON) should be failed with proper error, without bypass 
+80> Permanently Delete the multi-part Governance [retention-expired] object (Legal-hold-ON) should be failed with proper error, with no-bypass 
+81> Permanently Delete the multi-part Governance [retention-expired] object (Legal-hold-ON) should be failed with proper error, with bypass 
+82> Disable the Legal-hold for an existing single-part Governance object [previous-version], should be successful
+83> Disable the Legal-hold for an existing multi-part Governance object [previous-version], should be successful
+84> Verify the objects having Mode, retention time along with legal-hold status as OFF 
+85> Permanently Delete the single-part Governance [retention-expired] object (Legal-hold-OFF) via aws-cli without by-pass, should be successful  
+86> Permanently Delete the multi-part Governance [retention-expired] object (Legal-hold-OFF) via aws-cli without by-pass, should be successful 
+
+
+
+RAJESH  , You can start working on these cases 
+Object-Lock (Compliance) Vs S3API [Retention-Active] 
+
+1> Create bucket enabled with Object-lock , mode should be Compliance and Retention period as 2 days 
+2> Upload single-part objects via aws-cli, Compliance mode and retention time should be applied (as per bucket) use HEAD object call 
+3> Upload multi-part objects via aws-cli, Compliance mode and retention time should be applied (as per bucket) use HEAD object call 
+4> Reduce the retention period of the single-part Compliance object to few minutes , should be failed 
+5> Reduce the retention period of the single-part Compliance object to few hours , should be failed 
+6> Reduce the retention period of the multi-part Compliance object by 1day , should be failed 
+7> Temporary Delete the single-part Compliance [retention-active] object should be successful  , becomes previous version 
+8> Use list call to make sure Delete-marker gets created , previous version should be listed properly , No change in mode and retention time 
+9> Temporary Delete the multi-part Compliance [retention-active] object should be successful  , becomes previous version 
+10> Use list call to make sure Delete-marker gets created , previous version should be listed properly , No change in mode and retention time 
+11> Permanently Delete the single-part Compliance [retention-active] object via aws-cli , should be failed 
+12> Permanently Delete the multi-part Compliance [retention-active] via aws-cli , should be failed   
+13> Increase the retention period of the single-part Compliance object to few hours, should be successful 
+14> Increase the retention period of the multi-part Compliance object to few hours, should be successful 
+15> Change the single-part Compliance [retention-active] object to Governance mode, should be failed 
+16> Change the multi-part Compliance [retention-active] object to Governnace mode, should be failed 
+17> Upload single-part objects via aws-cli with Mode Compliance mode and retention time should be applied via put-object (over-ride bucket mode) 
+18> Upload multi-part objects via aws-cli with Mode Compliance mode and retention time should be applied via put-object (over-ride bucket mode)
+19> Overwrite the existing single-part Compliance object without any mode 
+20> Overwrite the existing multi-part Compliance object without any mode 
+21> Use list call to make sure Current and previous version should be listed properly ,verify mode and retention time only applies for previous version alone
+22> Overwrite the existing single-part Compliance object with Governance mode , should have 5 days retention from now 
+23> Overwrite the existing Multi-part Compliance object with Governance mode , should have 5 days retention from now 
+24> Use list call to make sure Current and previous version should be listed properly ,verify mode and retention time properly applied 
+25> Overwrite the existing single-part Compliance object with Governance mode , should have 3 days retention from now 
+26> Overwrite the existing Multi-part Compliance object with Governance mode , should have 5 days retention from now 
+27> Use list call to make sure Current and previous version should be listed properly ,verify mode and retention time properly applied 
+28> Permanently Delete the single-part Compliance retention active object [previous-version] via aws-cli, should be failed 
+29> Permanently Delete the Multi-part Compliance retention active object [previous-version] via aws-cli, should be failed 
+
+
+RAJESH 
+Compliance [Retention-Active] Vs Legal-Hold 
+
+30> Enable the Legal-hold for an existing single-part Compliance object [Current-version], should be successful [put-object-legal-hold  cmd] 
+31> Enable the Legal-hold for an existing multi-part Compliance object [Current-version], should be successful 
+32> Verify the objects [Current-version] having Mode, retention time along with legal-hold status as ON 
+33> Temporary Delete the single-part Compliance [retention-active] object (Legal-hold-ON) should be successful  , becomes previous version 
+34> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+35> Temporary Delete the multi-part Compliance [retention-active] object (Legal-hold-ON) should be successful  , becomes previous version 
+36> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+37> Verify the objects [previous-version] retaining Mode, retention time along with legal-hold status as ON (No changes) 
+38> Permanently Delete the single-part Compliance [retention-active] object (Legal-hold-ON) should be failed with proper error 
+39> Permanently Delete the multi-part Compliance [retention-active] object (Legal-hold-ON) should be failed with proper error , without bypass 
+40> Disable the Legal-hold for an existing single-part Compliance object [previous-version], should be successful
+41> Disable the Legal-hold for an existing multi-part Compliance object [previous-version], should be successful
+42> Verify the objects [Current-version] having Mode, retention time along with legal-hold status as OFF 
+43> Permanently Delete the single-part Compliance [retention-active] object (Legal-hold-OFF) via aws-cli, should be failed 
+44> Permanently Delete the multi-part Compliance [retention-active] object (Legal-hold-OFF) via aws-cli, should be failed 
+45> Upload single-part objects via aws-cli with Mode Compliance mode and retention time along with Legal-hold as ON should be applied via put-object (over-ride bucket mode) 
+46> Upload multi-part objects via aws-cli with Mode Compliance mode and retention time along with Legal-hold as ON should be applied via put-object (over-ride bucket mode)
+47> Verify the uploaded objects [Current-version] having Mode, retention time along with legal-hold status as ON 
+
+Compliance [Retention-Expired ]
+
+48> Temporary Delete the single-part Compliance [retention-expired] object should be successful, becomes previous version 
+49> Use list call to make sure Delete-marker gets created , previous version should be listed properly, No change in mode and retention time 
+50> Temporary Delete the multi-part Compliance [retention-expired] object should be successful, becomes previous version 
+51> Use list call to make sure Delete-marker gets created , previous version should be listed properly, No change in mode and retention time 
+52> Permanently Delete the single-part Compliance [retention-expired] via aws-cli, should be successful  
+53> Permanently Delete the multi-part Compliance [retention-expired] via aws-cli, should be successful  
+
+
+Compliance [Retention-Expired] Vs Legal-Hold 
+
+54> Temporary Delete the single-part Compliance  [retention-expired] object (Legal-hold-ON) should be successful, becomes previous version 
+55> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+56> Temporary Delete the multi-part Compliance  [retention-expired] object (Legal-hold-ON) should be successful, becomes previous version 
+57> Use list call to make sure Delete-marker gets created , previous version should be listed properly 
+58> Verify the objects [previous-version] retaining Mode, retention time along with legal-hold status as ON (No changes)
+59> Permanently Delete the single-part Compliance  [retention-expired] object (Legal-hold-ON) should be failed with proper error, 
+60> Permanently Delete the multi-part Compliance  [retention-expired] object (Legal-hold-ON) should be failed with proper error, 
+61> Disable the Legal-hold for an existing single-part Compliance object [previous-version], should be successful
+62> Disable the Legal-hold for an existing multi-part Compliance object [previous-version], should be successful
+63> Verify the objects having Mode, retention time along with legal-hold status as OFF 
+64> Permanently Delete the single-part Compliance [retention-expired] object (Legal-hold-OFF) via aws-cli , should be successful  
+65> Permanently Delete the multi-part Compliance [retention-expired] object (Legal-hold-OFF) via aws-cli , should be successful  
+
+
+RAJESH 
+Try these cases via CLI FTP
+Compliance bucket 
+1> Upload the single part object to the bucket , make sure its uploaded successfully applied the retention time as per bucket (API)
+2> List the objects in the bucket and verify its showing the uploaded object along with proper size 
+3> Rename the single part object (Retention-Active) , verify it has been renamed properly make sure the retention time has not changed 
+4> Download the renamed single-part object , make sure its not corrupted 
+5> Delete the single-part object (Retention-Active) from the bucket ,should be failed 
+6> Upload mulit-part (appended) object to the bucket , verify its properly uploaded and applied the retention time as per bucket (API)
+7> Rename the mulit-part (appended) object, verify it has been renamed properly and the retention time has not changed 
+8> Download the renamed mulit-part (appended) object, make sure its not corrupted 
+9> Delete the the mulit-part  (Retention-Active) object, ,should be failed 
+10> Overwrite the single-part object (Retention-Active) object, ,should be failed 
+11> Overwrite the multi-part object (Retention-Active) object, ,should be failed 
+12> Overwrite the single-part object (Retention-Expire) object, ,should be successfull and applied the retention time as per bucket (API)
+13> Overwrite the multi-part object (Retention-Expire) object, ,should be successfull and applied the retention time as per bucket (API)
+14> Download the overwritten single and multipart objects  verify its properly overwritten 
+15> Rename the single part object (Retention-Expired) , verify it has been renamed properly , verify the retention time has not changed 
+16> Delete the single-part object (Retention-Expired), should be successfull 
+17> Rename the mulit-part (Retention-Expired) object, verify it has been renamed properly and the retention time has not changed 
+18> Delete the the mulit-part (Retention-Expired) object, should be successfull 
+19> Execute all the above cases against the folder-level with single-part and multi-part objects
+
+
+Try via CLI 
+Create 2 buckets 
+Bucket needs to have object-lock Governance Mode - 2 days retention time 
+object-lock Compliance Mode - 1 days retention time 
+Perform upload, rename , overwrite , delete against Retention Active / Expired objects 
+All the cases needs to be covered for Objects - Single / multipart (append) type  
+
+hi 
+Good Morning 
+You can start working on following cases 
+Create a Sub-User by enabling the Console access along with reset password reqiured
+Attach the Admin-Access policy , After creating make sure the policy attached to user 
+Login as Sub-user for the 1st time should ask to reset the password 
+Login as Sub-user 2nd attempt should not prompt for the password change 
+After login verify the logged in User is properly showing, should be able to navigate to all the pages 
+Create a bucket and perform upload, download , delete , rename and overwrite operations via CONSOLE 
+Create Access-key pair , configure those keys in S3 APP make sure its properly listing the buckets 
+Perform upload, download , delete , rename and overwrite operations 
+Create a Sub-user by enabling Programatic API alone , attach policy as write-only policy 
+After creating user, Access key pairs should be shown , copy it 
+Make sure this Sub-user should not be allowed to access the console 
+Configure the Access-key pair in aws-cli , should support upload single/multipart objects to bucket and folders and overwrite
+As its write only download,list,delete, rename operations should be blocked 
+
+
+
+ 
+
+
+
+
